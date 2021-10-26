@@ -1,0 +1,5 @@
+@use "../app.component.scss" as appcom;
+
+mat-tab-group {
+  background-color: appcom.$spiritual;
+}
