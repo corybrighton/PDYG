@@ -9,12 +9,16 @@ import { environment } from '../environments/environment';
 import { FollowingSaviorComponent } from './following-savior/following-savior.component';
 import { SpiritualGoalsComponent } from './spiritual-goals/spiritual-goals.component';
 import { MaterialModule } from './materails.module';
+import { TaskListComponent } from './Task/task-list/task-list.component';
+import { TaskPlanningComponent } from './Task/task-planning/task-planning.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FollowingSaviorComponent,
-    SpiritualGoalsComponent
+    SpiritualGoalsComponent,
+    TaskListComponent,
+    TaskPlanningComponent
   ],
   imports: [
     BrowserModule,

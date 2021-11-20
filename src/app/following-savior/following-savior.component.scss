@@ -1,4 +1,4 @@
-@use '../app.component.scss' as appcom;
+@use "../app.component.scss" as appcom;
 
 .ssiplogo {
   display: block;
@@ -14,6 +14,14 @@
   width: 40%;
   @media (max-width: appcom.$tabletSize) {
     width: 70%;
+  }
+}
+
+.logo-press {
+  z-index: 60;
+  width: 24%;
+  @media (max-width: appcom.$tabletSize) {
+    width: 41%;
   }
 }
 
