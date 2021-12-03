@@ -1,7 +1,36 @@
+@use "../../app.component.scss" as mainstyle;
+
+.container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
 .checkbox {
-  width: 30px;
+  width: 40px;
+  padding: 4px;
 }
 
-.checkedbox {
-  width: 40px;
+p {
+  padding: 4px;
+}
+
+.list-item-date {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+}
+
+.tool-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.list-container {
+  max-width: mainstyle.$tabletSize;
 }
