@@ -4,6 +4,7 @@ export class TaskList {
   private _list: Map<string, Task>;
   private _completedList: Map<string, Task>;
   private _deletedList: Map<string, Task>;
+  private _taskAtHand: number = 0;
 
   constructor() {
     this._list = new Map();
@@ -28,12 +29,23 @@ export class TaskList {
       this._list.set(taskName, new Task(taskName));
   }
 
+  getTaskAtHand(): Task {
+    const taskKeys = [...this._list.keys()];
+    if (this._taskAtHand >= taskKeys.length || this._taskAtHand < 0)
+      this._taskAtHand = 0;
+    return this._list.get(taskKeys[this._taskAtHand])!;
+  }
+
+  set taskAtHand(n: number) { this._taskAtHand = n; }
+
   addTask(task: Task) { this.addToList(task); }
 
   removeTask(task: Task) {
     this._deletedList.set(task.taskItem, task);
-    if (this._list.has(task.taskItem)) this._list.delete(task.taskItem);
-    if (this._completedList.has(task.taskItem)) this._completedList.delete(task.taskItem);
+    if (this._list.has(task.taskItem))
+      this._list.delete(task.taskItem);
+    if (this._completedList.has(task.taskItem))
+      this._completedList.delete(task.taskItem);
   }
 
   public completeTask(task: Task): Map<string, Task> {

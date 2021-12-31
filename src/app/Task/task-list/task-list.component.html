@@ -1,21 +1,12 @@
 <div class="container">
+  <mat-toolbar class="tool-bar">
+    <mat-icon>settings</mat-icon>
+  </mat-toolbar>
   <div class="list-container" *ngFor="let task of mockList | keyvalue">
     <div class="list-item-date">
-      <div class="list-item">
-        <img *ngIf="!task.value.finished" (click)="checkTheBox(task.value)" class="checkbox"
-          src="../../../assets/noun_rounded rectangle_1087455.svg" alt="box">
-        <img *ngIf="task.value.finished" (click)="uncheckTheBox(task.value)" class="checkbox"
-          src="../../../assets/noun_Check_3551559.svg" alt="check">
-        <p>
-          {{task.value.taskItem}}
-        </p>
-      </div>
-      <p>
-        {{getTimeLeft(task.value)}}
-      </p>
+      <app-task-checkbox [taskItem]="task.value.taskItem" [taskFinished]="task.value.finished">
+      </app-task-checkbox>
+      <p> {{getTimeLeft(task.value)}} </p>
     </div>
-  </div>
-  <div class="tool-bar">
-    <mat-icon>settings</mat-icon>
   </div>
 </div>

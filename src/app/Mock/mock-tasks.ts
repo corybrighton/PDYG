@@ -59,6 +59,10 @@ function mockUpData(): TaskList {
     today.getHours(), today.getMinutes() + 2)
   listoftasks.addTask(new Task("In 2 Minutes"))
 
+  newDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(),
+    today.getHours(), today.getMinutes() + 20)
+  listoftasks.addTask(new Task("In 20 Minutes"))
+
   return listoftasks;
 }
 

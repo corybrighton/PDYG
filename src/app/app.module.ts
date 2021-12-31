@@ -9,8 +9,10 @@ import { environment } from '../environments/environment';
 import { FollowingSaviorComponent } from './following-savior/following-savior.component';
 import { SpiritualGoalsComponent } from './spiritual-goals/spiritual-goals.component';
 import { MaterialModule } from './materails.module';
+import { FormsModule } from '@angular/forms';
 import { TaskListComponent } from './Task/task-list/task-list.component';
 import { TaskPlanningComponent } from './Task/task-planning/task-planning.component';
+import { TaskCheckboxComponent } from './Task/task-checkbox/task-checkbox.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import { TaskPlanningComponent } from './Task/task-planning/task-planning.compon
     FollowingSaviorComponent,
     SpiritualGoalsComponent,
     TaskListComponent,
-    TaskPlanningComponent
+    TaskPlanningComponent,
+    TaskCheckboxComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     NoopAnimationsModule,
     MaterialModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

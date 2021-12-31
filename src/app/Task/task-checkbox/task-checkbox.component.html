@@ -1,0 +1,9 @@
+<div class="list-item">
+  <img *ngIf="!taskFinished" (click)="checkTheBox()" class="uncheckedbox"
+    src="../../../assets/noun_rounded rectangle_1087455.svg" alt="box">
+  <img *ngIf="taskFinished" (click)="checkTheBox()" class="checkbox" src="../../../assets/noun_Check_3551559.svg"
+    alt="check">
+  <p [routerLink]="['/task-planning']">
+    {{taskItem}}
+  </p>
+</div>

@@ -1,1 +1,132 @@
-<p>task-planning works!</p>
+<mat-drawer-container class="drawer-container" hasBackdrop autosize *ngIf="taskLoaded | async">
+
+
+  <!-- Settings Header -->
+  <mat-drawer class="drawer" #drawer mode="over">
+
+    <!-- Settings -->
+
+    <!-- Postpone -->
+    <div class="pointer">
+      <!-- TODO POSTPONE ITEM -->
+      <mat-icon>update</mat-icon>
+      Postpone
+    </div>
+
+    <!-- Delete -->
+    <div class="delete-container pointer">
+      <!-- TODO SEND ITEM TO DELETED LIST -->
+      <mat-icon class="delete-icon">delete</mat-icon>
+      <p class="delete-text"> Delete </p>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <!-- Tool Bar -->
+    <mat-toolbar class="tool-bar">
+      <!-- Settings -->
+      <mat-icon class="pointer" (click)="drawer.toggle()">settings</mat-icon>
+      <!-- Go to list -->
+      <mat-icon class="pointer" [routerLink]="['/task-list']">view_list</mat-icon>
+    </mat-toolbar>
+
+    <app-task-checkbox [taskItem]=taskAtHand.taskItem [taskFinished]=taskAtHand?.finished></app-task-checkbox>
+
+    <!-- Due Date -->
+    <div>
+      <!-- TODO SHOW WHEN TASK IS DO NEXT -->
+      due date
+      {{taskAtHand.timeLeft()}}
+    </div>
+
+    <!-- Privious Task -->
+    <div>
+      <!-- TODO go back to last task -->
+      <mat-icon>chevron_left</mat-icon>
+    </div>
+
+    <!-- Notes -->
+    <div>
+      <!-- TODO edit notes -->
+      Notes
+      {{taskAtHand.notes}}
+    </div>
+
+    <!-- Next Task -->
+    <div>
+      <!-- TODO add next button -->
+      <mat-icon>chevron_right</mat-icon>
+    </div>
+
+    <!-- Estimate of time -->
+    <div>
+      estimation of time
+      {{taskAtHand.estimateOfTime}}
+      <!-- TODO estimate how much time task will take -->
+    </div>
+
+    <!-- Priority -->
+    <div>
+      <!-- TODO MAKE PRIORITY SELECTOR -->
+      priority
+      {{taskAtHand.priority}}
+      <mat-slider (change)="graphScaling()" [(ngModel)]="taskAtHand.priority" thumbLabel tickInterval="1" step="1"
+        min="0" max="10" aria-label="units">
+      </mat-slider>
+    </div>
+
+    <!-- Urgency -->
+    <div>
+      <!-- TODO MAKE URGANCY SELECTOR -->
+      urgency
+      {{taskAtHand.urgency}}
+      <mat-slider (change)="graphScaling()" [(ngModel)]="taskAtHand.urgency" thumbLabel tickInterval="1" step="1"
+        min="0" max="10" aria-label="units">
+      </mat-slider>
+    </div>
+
+    <!-- Priority/Urgency Graph -->
+    <div>
+      <!-- TODO MAKE GRAPH OF PRIORITY VS URGANCY -->
+      <svg class="graph">
+        <!-- urgency (x axis) -->
+        <g>
+          <text x="-95" y="20" transform="rotate(-90)">Important</text>
+          <text x="-180" y="20" transform="rotate(-90)">Unimportant</text>
+          <text x="110" y="20">Urgent</text>
+          <text x="30" y="20">Not Urgent</text>
+        </g>
+        <g class="grid">
+          <line x1="100" x2="100" y1="25" y2="175"></line>
+          <line x1="25" x2="25" y1="25" y2="175"></line>
+          <line x1="175" x2="175" y1="25" y2="175"></line>
+        </g>
+        <!-- priority (y axis) -->
+        <g class="grid">
+          <line x1="25" x2="175" y1="100" y2="100"></line>
+          <line x1="25" x2="175" y1="25" y2="25"></line>
+          <line x1="25" x2="175" y1="175" y2="175"></line>
+        </g>
+        <g>
+          <circle [attr.cx]="urgency" [attr.cy]="priority" data-value="8.1" r="4">
+          </circle>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Repeating -->
+    <div>
+      <!-- TODO make calender to show when task is do -->
+      repeats
+      {{taskAtHand.repeats}}
+    </div>
+
+    <!-- Postponed -->
+    <div>
+      <!-- TODO ADD LOGIC TO DEAL WITH ITEMS THAT HAVE BEEN POSTPONED -->
+      Has been Postpone {{taskAtHand.postponed}}
+    </div>
+  </mat-drawer-content>
+
+</mat-drawer-container>

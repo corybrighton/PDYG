@@ -7,6 +7,8 @@ export class Task {
   private _urgency: number;
   private _dueDate: Date;
   private _repeats: boolean;
+  private _notes: string;
+  private _postponed: boolean;
 
   constructor(
     taskItem: string,
@@ -16,7 +18,9 @@ export class Task {
     timed: number = 0,
     priority: number = 5,
     urgency: number = 5,
-    repeats: boolean = false) {
+    repeats: boolean = false,
+    notes: string = "",
+    postponed: boolean = false) {
     this._finished = finished;
     this._taskItem = taskItem;
     this._estimateOfTime = estimateOfTime;
@@ -25,7 +29,14 @@ export class Task {
     this._urgency = urgency;
     this._dueDate = dueDate;
     this._repeats = repeats;
+    this._notes = notes;
+    this._postponed = postponed;
   }
+
+
+  public set postponed(v: boolean) { this._postponed = v; }
+
+  public get postponed() { return this._postponed; }
 
   public set taskItem(v: string) { this._taskItem = v; }
 
@@ -33,7 +44,7 @@ export class Task {
 
   public set finished(v: boolean) { this._finished = v; }
 
-  public get finished(): boolean { return this._finished; }
+  get finished(): boolean { return this._finished; }
 
   public set estimateOfTime(v: number) { this._estimateOfTime = v; }
 
@@ -53,11 +64,14 @@ export class Task {
 
   public set dueDate(v: Date) { this._dueDate = v; }
 
+  public set notes(v: string) { this._notes = v; }
+
+  public get notes() { return this._notes; }
 
   public timeLeft(): string {
-    const daysInMill = 24 * 60 * 60 * 1000;
-    const hoursInMill = 60 * 60 * 1000;
     const minutesInMill = 60 * 1000;
+    const hoursInMill = 60 * minutesInMill;
+    const daysInMill = 24 * hoursInMill;
     const now: Date = new Date();
     let left: string = "Error";
     let t: number = 0;
@@ -78,7 +92,7 @@ export class Task {
   }
 
   private convertTime(s: number, t: number, d: string) {
-    return Math.ceil(s / t) + " " + d
+    return Math.ceil(s / t) + " " + d;
   }
 
   public get repeats(): boolean { return this._repeats; }
