@@ -10,35 +10,57 @@ import { Task } from 'src/app/Models/task';
 })
 export class TaskPlanningComponent implements OnInit {
 
-  taskList: TaskList | undefined;
-  taskAtHand: Task;
+  taskList: TaskList;
   taskLoaded: Promise<boolean> | undefined;
-  priority = 0;
-  urgency = 0;
+  taskListName: string[] = [];
+  taskPlanned: boolean[] = [];
+  taskAtHand: Task;
 
   constructor(private taskService: TaskService) {
-    this.taskAtHand = new Task("Loading Task");
+    this.taskList = new TaskList();
+    this.taskAtHand = new Task("Loading Plan Task...")
   }
-
 
   ngOnInit(): void {
     this.getTasks();
+    this.taskService.getTaskAtHand().subscribe(
+      task => this.taskAtHand = task
+    )
   }
 
   getTasks() {
     this.taskService.getTasks()
       .subscribe(taskList => {
         this.taskList = taskList;
-        this.taskAtHand = taskList.getTaskAtHand();
-        this.graphScaling();
+        this.taskListName = [...taskList.list.keys()];
+        taskList.list.forEach(element => {
+          this.taskPlanned.push(false);
+        });
         this.taskLoaded = Promise.resolve(true);
       });
   }
 
-  graphScaling() {
-    const offset = 25;
-    const axisLength = 200 - (2 * offset);
-    this.urgency = offset + this.taskAtHand.urgency * (axisLength / 10);
-    this.priority = (axisLength + offset) - (this.taskAtHand.priority * (axisLength / 10));
+  goToNextTask() {
+    let taskIndex = 0;
+    if (this.taskLoaded) {
+      taskIndex =
+        this.taskListName.indexOf(this.taskAtHand.taskItem) + 1;
+      if (taskIndex >= this.taskListName.length || taskIndex == -1)
+        taskIndex = 0;
+
+      this.taskService.setTaskAtHand(this.getTask(taskIndex));
+      console.log(this.taskAtHand.taskItem)
+    }
+  }
+
+  private getTask(n: number): Task {
+    let taskName = this.taskListName[n];
+    let task: Task = new Task("Loading Task Next...");
+    return this.taskList.list.get(taskName) || task;
+  }
+
+  goBackATask() {
+    // TODO GO BACK A TASK
+    console.log("Go Back")
   }
 }

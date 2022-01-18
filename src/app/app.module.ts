@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { TaskListComponent } from './Task/task-list/task-list.component';
 import { TaskPlanningComponent } from './Task/task-planning/task-planning.component';
 import { TaskCheckboxComponent } from './Task/task-checkbox/task-checkbox.component';
+import { PlanningDetialComponent } from './Task/planning-detial/planning-detial.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TaskCheckboxComponent } from './Task/task-checkbox/task-checkbox.compon
     SpiritualGoalsComponent,
     TaskListComponent,
     TaskPlanningComponent,
-    TaskCheckboxComponent
+    TaskCheckboxComponent,
+    PlanningDetialComponent
   ],
   imports: [
     BrowserModule,

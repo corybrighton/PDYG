@@ -4,7 +4,8 @@
   </mat-toolbar>
   <div class="list-container" *ngFor="let task of mockList | keyvalue">
     <div class="list-item-date">
-      <app-task-checkbox [taskItem]="task.value.taskItem" [taskFinished]="task.value.finished">
+      <app-task-checkbox (click)="selectTask(task.value)" [taskItem]="task.value.taskItem"
+        [taskFinished]="task.value.finished">
       </app-task-checkbox>
       <p> {{getTimeLeft(task.value)}} </p>
     </div>
