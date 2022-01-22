@@ -12,8 +12,8 @@ export class TaskPlanningComponent implements OnInit {
 
   taskList: TaskList;
   taskLoaded: Promise<boolean> | undefined;
-  taskListName: string[] = [];
-  taskPlanned: boolean[] = [];
+  taskListNames: string[] = [];
+  taskPlanneds: boolean[] = [];
   taskAtHand: Task;
 
   constructor(private taskService: TaskService) {
@@ -32,9 +32,9 @@ export class TaskPlanningComponent implements OnInit {
     this.taskService.getTasks()
       .subscribe(taskList => {
         this.taskList = taskList;
-        this.taskListName = [...taskList.list.keys()];
+        this.taskListNames = [...taskList.list.keys()];
         taskList.list.forEach(element => {
-          this.taskPlanned.push(false);
+          this.taskPlanneds.push(false);
         });
         this.taskLoaded = Promise.resolve(true);
       });
@@ -44,23 +44,28 @@ export class TaskPlanningComponent implements OnInit {
     let taskIndex = 0;
     if (this.taskLoaded) {
       taskIndex =
-        this.taskListName.indexOf(this.taskAtHand.taskItem) + 1;
-      if (taskIndex >= this.taskListName.length || taskIndex == -1)
+        this.taskListNames.indexOf(this.taskAtHand.taskItem) + 1;
+      if (taskIndex >= this.taskListNames.length || taskIndex == -1)
         taskIndex = 0;
 
       this.taskService.setTaskAtHand(this.getTask(taskIndex));
-      console.log(this.taskAtHand.taskItem)
     }
   }
 
   private getTask(n: number): Task {
-    let taskName = this.taskListName[n];
+    let taskName = this.taskListNames[n];
     let task: Task = new Task("Loading Task Next...");
     return this.taskList.list.get(taskName) || task;
   }
 
   goBackATask() {
-    // TODO GO BACK A TASK
-    console.log("Go Back")
+    console.log("go back")
+    let taskIndex = 0;
+    if (this.taskLoaded) {
+      taskIndex = this.taskListNames.indexOf(this.taskAtHand.taskItem) - 1;
+      if (taskIndex < 0)
+        taskIndex = this.taskListNames.length - 1;
+      this.taskService.setTaskAtHand(this.getTask(taskIndex));
+    }
   }
 }

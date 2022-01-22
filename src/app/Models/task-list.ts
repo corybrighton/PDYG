@@ -38,8 +38,6 @@ export class TaskList {
       this._completedList.delete(task.taskItem);
   }
 
-
-
   public completeTask(task: Task): Map<string, Task> {
     if (this._completedList.has(task.taskItem))
       return this.completedList;
