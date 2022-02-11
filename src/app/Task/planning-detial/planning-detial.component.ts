@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Task } from 'src/app/Models/task';
 import { TaskService } from '../task.service';
 
@@ -9,18 +9,20 @@ import { TaskService } from '../task.service';
 })
 export class PlanningDetialComponent implements OnInit {
 
-  taskAtHand: Task;
+  @Input()
+  taskAtHand!: Task;
+
   urgency = 0;
   priority = 0;
 
-  constructor(private taskService: TaskService) {
-    this.taskAtHand = new Task("Loading Task...");
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.taskService.getTaskAtHand().subscribe(
-      task => this.taskAtHand = task
-    )
+    this.graphScaling();
+  }
+
+  ngOnChanges() {
     this.graphScaling();
   }
 

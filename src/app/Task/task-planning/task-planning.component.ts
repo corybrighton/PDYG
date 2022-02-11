@@ -23,9 +23,7 @@ export class TaskPlanningComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTasks();
-    this.taskService.getTaskAtHand().subscribe(
-      task => this.taskAtHand = task
-    )
+    this.taskService.getTaskAtHand().subscribe(task => this.taskAtHand = task);
   }
 
   getTasks() {
@@ -59,7 +57,6 @@ export class TaskPlanningComponent implements OnInit {
   }
 
   goBackATask() {
-    console.log("go back")
     let taskIndex = 0;
     if (this.taskLoaded) {
       taskIndex = this.taskListNames.indexOf(this.taskAtHand.taskItem) - 1;
@@ -67,5 +64,17 @@ export class TaskPlanningComponent implements OnInit {
         taskIndex = this.taskListNames.length - 1;
       this.taskService.setTaskAtHand(this.getTask(taskIndex));
     }
+  }
+
+  deleteThisTask() {
+    console.log("delete this task");
+    // TODO SEND TASK TO DELETED TASKS
+    // TODO GO TO NEXT TASK
+  }
+
+  postponeTask() {
+    console.log("postpone this task");
+    // SHOW LIST OF OPTIONS TO MOVE THE TASK BACK TO
+    // TODO  MOVE DUE DATE BACK 
   }
 }

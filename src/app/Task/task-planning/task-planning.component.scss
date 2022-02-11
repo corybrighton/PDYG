@@ -1,3 +1,14 @@
+.container{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.vertical-center{
+  display: flex;
+  align-items: center;
+}
+
 .drawer {
   width: max-content;
   padding: 10px;

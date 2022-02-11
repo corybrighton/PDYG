@@ -1,21 +1,21 @@
 <mat-drawer-container class="drawer-container" hasBackdrop autosize *ngIf="taskLoaded | async">
 
 
-  <!-- Settings Header -->
+  <!-- Settings Header Hiden in Drawer -->
   <mat-drawer class="drawer" #drawer mode="over">
 
-    <!-- Settings -->
-
     <!-- Postpone -->
-    <div class="pointer">
+    <div (click)="postponeTask()" class="pointer">
       <!-- TODO POSTPONE ITEM -->
+      <!-- TODO SHOW OPTIONS TO POSTPONE -->
       <mat-icon>update</mat-icon>
       Postpone
     </div>
 
     <!-- Delete -->
-    <div class="delete-container pointer">
+    <div (click)="deleteThisTask()" class="delete-container pointer">
       <!-- TODO SEND ITEM TO DELETED LIST -->
+      <!-- TODO CONFIRM DELETION -->
       <mat-icon class="delete-icon">delete</mat-icon>
       <p class="delete-text"> Delete </p>
     </div>
@@ -31,19 +31,20 @@
       <mat-icon class="pointer" [routerLink]="['/task-list']">view_list</mat-icon>
     </mat-toolbar>
 
-    <!-- Privious Task -->
-    <div>
-      <!-- TODO go back to last task -->
-      <mat-icon (click)="goBackATask()">chevron_left</mat-icon>
-    </div>
+    <div class="container">
 
-    <app-planning-detial></app-planning-detial>
-
-
-    <!-- Next Task -->
-    <div>
-      <!-- TODO add next button -->
-      <mat-icon (click)="goToNextTask()">chevron_right</mat-icon>
+      <!-- Privious Task -->
+      <div class="vertical-center">
+        <mat-icon (click)="goBackATask()">chevron_left</mat-icon>
+      </div>
+      
+      <!-- Details of Active Task -->
+      <app-planning-detial [taskAtHand]="taskAtHand"></app-planning-detial>
+      
+      <!-- Next Task -->
+      <div class="vertical-center">
+        <mat-icon (click)="goToNextTask()">chevron_right</mat-icon>
+      </div>
     </div>
 
 
