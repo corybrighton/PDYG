@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Task } from 'src/app/Models/task';
-import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-planning-detial',
