@@ -3,7 +3,6 @@
 <!-- Due Date -->
 <div>
   <!-- TODO SHOW WHEN TASK IS DO NEXT -->
-  due date
   {{taskAtHand.timeLeft()}}
 </div>
 
@@ -25,8 +24,14 @@
   <!-- TODO MAKE PRIORITY SELECTOR -->
   priority
   {{taskAtHand.priority}}
-  <mat-slider (change)="graphScaling()" [(ngModel)]="taskAtHand.priority" thumbLabel tickInterval="1" step="1" min="0"
-    max="10" aria-label="units">
+  <mat-slider 
+    (change)="graphScaling()" 
+    [(ngModel)]="taskAtHand.priority" 
+    thumbLabel tickInterval="1" 
+    step="1" 
+    min="0"
+    max="10" 
+    aria-label="units">
   </mat-slider>
 </div>
 
@@ -35,8 +40,14 @@
   <!-- TODO MAKE URGANCY SELECTOR -->
   urgency
   {{taskAtHand.urgency}}
-  <mat-slider (change)="graphScaling()" [(ngModel)]="taskAtHand.urgency" thumbLabel tickInterval="1" step="1" min="0"
-    max="10" aria-label="units">
+  <mat-slider 
+    (change)="graphScaling()" 
+    [(ngModel)]="taskAtHand.urgency" 
+    thumbLabel tickInterval="1" 
+    step="1" 
+    min="0"
+    max="10" 
+    aria-label="units">
   </mat-slider>
 </div>
 

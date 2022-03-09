@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Task } from 'src/app/Models/task';
 
 @Component({
@@ -14,11 +15,14 @@ export class PlanningDetialComponent implements OnInit {
   urgency = 0;
   priority = 0;
 
-  constructor() {
+  constructor(private route: Router) {
   }
 
   ngOnInit(): void {
-    this.graphScaling();
+    if(this.taskAtHand)
+      this.graphScaling();
+    else
+      this.route.navigateByUrl("/task-list")
   }
 
   ngOnChanges() {

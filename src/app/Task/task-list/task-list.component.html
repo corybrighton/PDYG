@@ -7,7 +7,8 @@
       <div class="list-item">
         <img *ngIf="!task.value.finished" (click)="checkTheBox(task.value)" class="uncheckedbox"
           src="../../../assets/noun_rounded rectangle_1087455.svg" alt="box">
-        <img *ngIf="task.value.finished" (click)="uncheckTheBox(task.value.taskItem)" class="checkbox" src="../../../assets/noun_Check_3551559.svg"
+        <img *ngIf="task.value.finished" (click)="uncheckTheBox(task.value.taskItem)" 
+          class="checkbox" src="../../../assets/noun_Check_3551559.svg"
           alt="check">
         <p (click)="selectTask(task.value)">
           {{task.value.taskItem}}
