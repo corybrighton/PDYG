@@ -37,4 +37,9 @@ export class PlanningDetialComponent implements OnInit {
     this.urgency = offset + this.taskAtHand.urgency * (axisLength / 10);
     this.priority = (axisLength + offset) - (this.taskAtHand.priority * (axisLength / 10));
   }
+
+  checkTheBox() {
+    this.taskAtHand.finished = !this.taskAtHand.finished;
+    // TODO SEND TO BACK END
+  }
 }

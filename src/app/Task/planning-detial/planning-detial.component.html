@@ -1,8 +1,19 @@
-<app-task-checkbox [taskItem]=taskAtHand.taskItem [taskFinished]=taskAtHand?.finished></app-task-checkbox>
+<div class="list-item">
+  <img *ngIf="!taskAtHand.finished" 
+    (click)="checkTheBox()" 
+    class="uncheckedbox"
+    src="../../../assets/noun_rounded rectangle_1087455.svg" alt="box">
+  <img *ngIf="taskAtHand.finished" 
+    (click)="checkTheBox()" 
+    class="checkbox" 
+    src="../../../assets/noun_Check_3551559.svg"
+    alt="check">
+  <p>{{taskAtHand.taskItem}}</p>
+</div>
 
 <!-- Due Date -->
 <div>
-  <!-- TODO SHOW WHEN TASK IS DO NEXT -->
+  <!-- SHOW WHEN TASK IS DO NEXT -->
   {{taskAtHand.timeLeft()}}
 </div>
 
