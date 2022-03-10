@@ -1,3 +1,4 @@
+import { TaskService } from './../task.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Task } from 'src/app/Models/task';
@@ -15,14 +16,15 @@ export class PlanningDetialComponent implements OnInit {
   urgency = 0;
   priority = 0;
 
-  constructor(private route: Router) {
+  constructor(private route: Router, private taskService: TaskService) {
   }
 
   ngOnInit(): void {
-    if(this.taskAtHand)
+    this.taskService.getTaskAtHand().subscribe(t => {this.taskAtHand = t});
+    if (this.taskAtHand.taskItem !== this.taskService.TASKLOADSERVICE)
       this.graphScaling();
     else
-      this.route.navigateByUrl("/task-list")
+      this.route.navigateByUrl("/task-list");
   }
 
   ngOnChanges() {

@@ -11,7 +11,8 @@ import { TaskList } from '../Models/task-list';
 export class TaskService {
 
   taskListFilled: boolean = false;
-  private taskAtHand = new BehaviorSubject<Task>(new Task("Loading service Task..."))
+  readonly TASKLOADSERVICE:string = "Loading service Task...";
+  private taskAtHand = new BehaviorSubject<Task>(new Task(this.TASKLOADSERVICE))
 
   constructor() {
   }
@@ -26,8 +27,8 @@ export class TaskService {
       // TODO GET FROM SERVER TASK LIST
     } else {
       tasks = of(MockTasks);
-      this.taskListFilled = true;
     }
+    this.taskListFilled = true;
     return tasks;
   }
 }
