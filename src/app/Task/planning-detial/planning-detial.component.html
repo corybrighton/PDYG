@@ -11,7 +11,7 @@
   <p>{{taskAtHand.taskItem}}</p>
 </div>
 
-<!-- Due Date -->
+<!-- Time Left -->
 <div>
   <!-- SHOW WHEN TASK IS DO NEXT -->
   {{taskAtHand.timeLeft()}}
@@ -64,7 +64,6 @@
 
 <!-- Priority/Urgency Graph -->
 <div>
-  <!-- TODO MAKE GRAPH OF PRIORITY VS URGANCY -->
   <svg class="graph">
     <!-- urgency (x axis) -->
     <g>
@@ -103,3 +102,5 @@
   <!-- TODO ADD LOGIC TO DEAL WITH ITEMS THAT HAVE BEEN POSTPONED -->
   Has been Postpone {{taskAtHand.postponed}}
 </div>
+
+<mat-calendar [(selected)]="taskAtHand.dueDate"></mat-calendar>

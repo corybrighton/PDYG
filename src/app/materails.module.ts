@@ -6,11 +6,12 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const materialModules = [
   MatTabsModule, MatIconModule, MatSliderModule, MatSidenavModule,
-  MatToolbarModule, MatInputModule, MatDatepickerModule
+  MatToolbarModule, MatInputModule, MatDatepickerModule, MatNativeDateModule
 ];
 
 
