@@ -11,16 +11,17 @@ export class Task {
   private _postponed: boolean;
 
   constructor(
-    taskItem: string,
-    dueDate: Date = new Date(),
-    finished: boolean = false,
-    estimateOfTime: number = 0,
-    timed: number = 0,
-    priority: number = 5,
-    urgency: number = 5,
-    repeats: boolean = false,
-    notes: string = "",
-    postponed: boolean = false) {
+      taskItem: string,
+      dueDate: Date = new Date(),
+      finished: boolean = false,
+      estimateOfTime: number = 0,
+      timed: number = 0,
+      priority: number = 5,
+      urgency: number = 5,
+      repeats: boolean = false,
+      notes: string = "",
+      postponed: boolean = false)
+  {
     this._finished = finished;
     this._taskItem = taskItem;
     this._estimateOfTime = estimateOfTime;
@@ -32,7 +33,6 @@ export class Task {
     this._notes = notes;
     this._postponed = postponed;
   }
-
 
   public set postponed(v: boolean) { this._postponed = v; }
 

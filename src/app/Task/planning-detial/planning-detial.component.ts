@@ -1,6 +1,6 @@
 import { TaskService } from './../task.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Task } from 'src/app/Models/task';
 
 @Component({
@@ -40,6 +40,8 @@ export class PlanningDetialComponent implements OnInit {
 
   checkTheBox() {
     this.taskAtHand.finished = !this.taskAtHand.finished;
+    // TODO put on finished list
+    // TODO make a new one when repeated
     // TODO SEND TO BACK END
   }
 }

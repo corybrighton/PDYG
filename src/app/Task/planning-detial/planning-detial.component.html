@@ -30,31 +30,12 @@
   <!-- TODO estimate how much time task will take -->
 </div>
 
-<!-- Priority -->
-<div>
-  <!-- TODO MAKE PRIORITY SELECTOR -->
-  priority
-  {{taskAtHand.priority}}
-  <mat-slider 
-    (change)="graphScaling()" 
-    [(ngModel)]="taskAtHand.priority" 
-    thumbLabel tickInterval="1" 
-    step="1" 
-    min="0"
-    max="10" 
-    aria-label="units">
-  </mat-slider>
-</div>
-
 <!-- Urgency -->
 <div>
   <!-- TODO MAKE URGANCY SELECTOR -->
-  urgency
-  {{taskAtHand.urgency}}
-  <mat-slider 
+    <mat-slider 
     (change)="graphScaling()" 
     [(ngModel)]="taskAtHand.urgency" 
-    thumbLabel tickInterval="1" 
     step="1" 
     min="0"
     max="10" 
@@ -62,6 +43,18 @@
   </mat-slider>
 </div>
 
+<!-- Priority -->
+<div>
+<mat-slider 
+  (change)="graphScaling()" 
+  [(ngModel)]="taskAtHand.priority" 
+  vertical="true"
+  step="1" 
+  min="0"
+  max="10" 
+  aria-label="units">
+</mat-slider>
+</div>
 <!-- Priority/Urgency Graph -->
 <div>
   <svg class="graph">
