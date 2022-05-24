@@ -1,21 +1,20 @@
 <div class="list-item">
-  <img *ngIf="!taskAtHand.finished" 
-    (click)="checkTheBox()" 
-    class="uncheckedbox"
+  <img *ngIf="!taskAtHand.finished" (click)="checkTheBox()" class="uncheckedbox"
     src="../../../assets/noun_rounded rectangle_1087455.svg" alt="box">
-  <img *ngIf="taskAtHand.finished" 
-    (click)="checkTheBox()" 
-    class="checkbox" 
-    src="../../../assets/noun_Check_3551559.svg"
+  <img *ngIf="taskAtHand.finished" (click)="checkTheBox()" class="checkbox" src="../../../assets/noun_Check_3551559.svg"
     alt="check">
-  <p>{{taskAtHand.taskItem}}</p>
+  <p *ngIf="!isEditing"  (click)="isEditing = true">{{taskAtHand.taskItem}}</p>
+  <span *ngIf="isEditing">
+    <input type="text"  [(ngModel)]="taskAtHand.taskItem"/>
+    <img (click)="isEditing = false" class="checkbox" src="../../../assets/noun-no-pencil-399937.svg" alt="stop_editing">
+  </span>
+  <!-- Time Left -->
+  <p>
+    <!-- SHOW WHEN TASK IS DO NEXT -->
+    {{taskAtHand.timeLeft()}}
+  </p>
 </div>
 
-<!-- Time Left -->
-<div>
-  <!-- SHOW WHEN TASK IS DO NEXT -->
-  {{taskAtHand.timeLeft()}}
-</div>
 
 <!-- Notes -->
 <mat-form-field appearance="fill">
@@ -30,64 +29,59 @@
   <!-- TODO estimate how much time task will take -->
 </div>
 
-<!-- Urgency -->
-<div>
-  <!-- TODO MAKE URGANCY SELECTOR -->
-    <mat-slider 
-    (change)="graphScaling()" 
-    [(ngModel)]="taskAtHand.urgency" 
-    step="1" 
-    min="0"
-    max="10" 
-    aria-label="units">
-  </mat-slider>
-</div>
+<!-- Urgency/Priority -->
+<div class="up-class">
 
-<!-- Priority -->
-<div>
-<mat-slider 
-  (change)="graphScaling()" 
-  [(ngModel)]="taskAtHand.priority" 
-  vertical="true"
-  step="1" 
-  min="0"
-  max="10" 
-  aria-label="units">
-</mat-slider>
-</div>
-<!-- Priority/Urgency Graph -->
-<div>
-  <svg class="graph">
-    <!-- urgency (x axis) -->
-    <g>
-      <text x="-95" y="20" transform="rotate(-90)">Important</text>
-      <text x="-180" y="20" transform="rotate(-90)">Unimportant</text>
-      <text x="110" y="20">Urgent</text>
-      <text x="30" y="20">Not Urgent</text>
-    </g>
-    <g class="grid">
-      <line x1="100" x2="100" y1="25" y2="175"></line>
-      <line x1="25" x2="25" y1="25" y2="175"></line>
-      <line x1="175" x2="175" y1="25" y2="175"></line>
-    </g>
-    <!-- priority (y axis) -->
-    <g class="grid">
-      <line x1="25" x2="175" y1="100" y2="100"></line>
-      <line x1="25" x2="175" y1="25" y2="25"></line>
-      <line x1="25" x2="175" y1="175" y2="175"></line>
-    </g>
-    <g>
-      <circle [attr.cx]="urgency" [attr.cy]="priority" data-value="8.1" r="4">
-      </circle>
-    </g>
-  </svg>
+  <!-- Graph Priority Slider Div -->
+  <div class="priority-graph">
+
+    <!-- Priority/Urgency Graph -->
+    <div>
+      <svg class="graph">
+        <!-- urgency (x axis) -->
+        <g>
+          <text x="-95" y="20" transform="rotate(-90)">Important</text>
+          <text x="-180" y="20" transform="rotate(-90)">Unimportant</text>
+          <text x="110" y="20">Urgent</text>
+          <text x="30" y="20">Not Urgent</text>
+        </g>
+        <g class="grid">
+          <line x1="100" x2="100" y1="25" y2="175"></line>
+          <line x1="25" x2="25" y1="25" y2="175"></line>
+          <line x1="175" x2="175" y1="25" y2="175"></line>
+        </g>
+        <!-- priority (y axis) -->
+        <g class="grid">
+          <line x1="25" x2="175" y1="100" y2="100"></line>
+          <line x1="25" x2="175" y1="25" y2="25"></line>
+          <line x1="25" x2="175" y1="175" y2="175"></line>
+        </g>
+        <g>
+          <circle [attr.cx]="urgency" [attr.cy]="priority" data-value="8.1" r="4">
+          </circle>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Priority Slider -->
+    <div>
+      <mat-slider (change)="graphScaling()" [(ngModel)]="taskAtHand.priority" vertical="true" step="1" min="0" max="10"
+        aria-label="units">
+      </mat-slider>
+    </div>
+  </div>
+
+  <!-- Urgency Slider -->
+  <div>
+    <mat-slider (change)="graphScaling()" [(ngModel)]="taskAtHand.urgency" step="1" min="0" max="10" aria-label="units">
+    </mat-slider>
+  </div>
 </div>
 
 <!-- Repeating -->
 <div>
   <!-- TODO make calender to show when task is do -->
-  repeats
-  {{taskAtHand.repeats}}
+  repeats {{taskAtHand.repeats}}
 </div>
 
 <!-- Postponed -->

@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { TaskListComponent } from './Task/task-list/task-list.component';
 import { TaskPlanningComponent } from './Task/task-planning/task-planning.component';
 import { PlanningDetialComponent } from './Task/planning-detial/planning-detial.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { PlanningDetialComponent } from './Task/planning-detial/planning-detial.
     FormsModule,
     NoopAnimationsModule,
     MaterialModule,
+    FontAwesomeModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

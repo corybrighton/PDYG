@@ -2,6 +2,7 @@ import { TaskService } from './../task.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Task } from 'src/app/Models/task';
+import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-planning-detial',
@@ -12,9 +13,10 @@ export class PlanningDetialComponent implements OnInit {
 
   @Input()
   taskAtHand!: Task;
-
+  
   urgency = 0;
   priority = 0;
+  isEditing = false;
 
   constructor(private route: Router, private taskService: TaskService) {
   }

@@ -8,3 +8,18 @@
   stroke-dasharray: 0;
   stroke-width: 1;
 }
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.up-class {
+  display: flex;
+  flex-direction: column;
+}
+
+.priority-graph {
+  display: flex;
+  justify-content: baseline;
+}
