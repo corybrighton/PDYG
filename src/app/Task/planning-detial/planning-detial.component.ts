@@ -2,7 +2,7 @@ import { TaskService } from './../task.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Task } from 'src/app/Models/task';
-import { NgModule } from '@angular/core';
+import { faSquareCheck, faSquare, faSquarePen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-planning-detial',
@@ -14,9 +14,12 @@ export class PlanningDetialComponent implements OnInit {
   @Input()
   taskAtHand!: Task;
   
-  urgency = 0;
-  priority = 0;
-  isEditing = false;
+  urgency: number = 0;
+  priority: number = 0;
+  isEditing: boolean = false;
+  faSquareCheck = faSquareCheck;
+  faSquare = faSquare;
+  faSquarePen = faSquarePen;
 
   constructor(private route: Router, private taskService: TaskService) {
   }

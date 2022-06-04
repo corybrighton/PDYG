@@ -1,12 +1,10 @@
 <div class="list-item">
-  <img *ngIf="!taskAtHand.finished" (click)="checkTheBox()" class="uncheckedbox"
-    src="../../../assets/noun_rounded rectangle_1087455.svg" alt="box">
-  <img *ngIf="taskAtHand.finished" (click)="checkTheBox()" class="checkbox" src="../../../assets/noun_Check_3551559.svg"
-    alt="check">
+  <fa-icon *ngIf="!taskAtHand.finished" size="lg" (click)="checkTheBox()" [icon]="faSquare"></fa-icon>
+  <fa-icon *ngIf="taskAtHand.finished" size="lg" (click)="checkTheBox()" [icon]="faSquareCheck"></fa-icon>
   <p *ngIf="!isEditing"  (click)="isEditing = true">{{taskAtHand.taskItem}}</p>
   <span *ngIf="isEditing">
     <input type="text"  [(ngModel)]="taskAtHand.taskItem"/>
-    <img (click)="isEditing = false" class="checkbox" src="../../../assets/noun-no-pencil-399937.svg" alt="stop_editing">
+    <fa-icon (click)="isEditing = false" size="lg" [icon]="faSquarePen"></fa-icon>
   </span>
   <!-- Time Left -->
   <p>
