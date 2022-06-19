@@ -2,6 +2,7 @@
   <fa-icon *ngIf="!taskAtHand.finished" size="lg" (click)="checkTheBox()" [icon]="faSquare"></fa-icon>
   <fa-icon *ngIf="taskAtHand.finished" size="lg" (click)="checkTheBox()" [icon]="faSquareCheck"></fa-icon>
   <p *ngIf="!isEditing"  (click)="isEditing = true">{{taskAtHand.taskItem}}</p>
+  
   <span *ngIf="isEditing">
     <input type="text"  [(ngModel)]="taskAtHand.taskItem"/>
     <fa-icon (click)="isEditing = false" size="lg" [icon]="faSquarePen"></fa-icon>

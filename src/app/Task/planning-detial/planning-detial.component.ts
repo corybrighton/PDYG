@@ -2,7 +2,8 @@ import { TaskService } from './../task.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Task } from 'src/app/Models/task';
-import { faSquareCheck, faSquare, faSquarePen } from '@fortawesome/free-solid-svg-icons';
+import { faSquareCheck, faSquarePen } from '@fortawesome/free-solid-svg-icons';
+import { faSquare } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-planning-detial',
