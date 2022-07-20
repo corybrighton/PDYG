@@ -9,6 +9,11 @@ mat-tab-group {
   justify-content: space-between;
 }
 
+.container{
+  overflow-y: scroll;
+  margin-bottom: 64px;
+}
+
 .pointer {
   cursor: pointer;
 }
