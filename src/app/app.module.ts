@@ -14,6 +14,7 @@ import { TaskListComponent } from './Task/task-list/task-list.component';
 import { TaskPlanningComponent } from './Task/task-planning/task-planning.component';
 import { PlanningDetialComponent } from './Task/planning-detial/planning-detial.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PdygToolbarComponent } from './pdyg-toolbar/pdyg-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SpiritualGoalsComponent,
     TaskListComponent,
     TaskPlanningComponent,
-    PlanningDetialComponent
+    PlanningDetialComponent,
+    PdygToolbarComponent
   ],
   imports: [
     BrowserModule,
