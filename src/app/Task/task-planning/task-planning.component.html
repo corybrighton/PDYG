@@ -1,54 +1,15 @@
-<mat-drawer-container class="drawer-container" hasBackdrop autosize *ngIf="taskLoaded | async">
-
-
-  <!-- Settings Header Hiden in Drawer -->
-  <mat-drawer class="drawer" #drawer mode="over">
-
-    <!-- Postpone -->
-    <div (click)="postponeTask()" class="pointer">
-      <!-- TODO POSTPONE ITEM -->
-      <!-- TODO SHOW OPTIONS TO POSTPONE -->
-      <mat-icon>update</mat-icon>
-      Postpone
-    </div>
-
-    <!-- Delete -->
-    <div (click)="deleteThisTask()" class="delete-container pointer">
-      <!-- TODO SEND ITEM TO DELETED LIST -->
-      <!-- TODO CONFIRM DELETION -->
-      <mat-icon class="delete-icon">delete</mat-icon>
-      <p class="delete-text"> Delete </p>
-    </div>
-  </mat-drawer>
-
-  <mat-drawer-content>
-    
-    <div class="container">
-      
-      <!-- Privious Task -->
-      <div class="vertical-center">
-        <mat-icon (click)="goBackATask()">chevron_left</mat-icon>
-      </div>
-      
-      <!-- Details of Active Task -->
-      <app-planning-detial [taskAtHand]="taskAtHand"></app-planning-detial>
-      
-      <!-- Next Task -->
-      <div class="vertical-center">
-        <mat-icon (click)="goToNextTask()">chevron_right</mat-icon>
-      </div>
-    </div>
-    
-    
-    <!-- Tool Bar -->
-    <app-pdyg-toolbar></app-pdyg-toolbar>
-    <!-- <mat-toolbar class="tool-bar"> -->
-      <!-- Settings -->
-      <!-- <mat-icon class="pointer" (click)="drawer.toggle()">settings</mat-icon> -->
-      <!-- Go to list -->
-      <!-- <mat-icon class="pointer" [routerLink]="['/task-list']">view_list</mat-icon> -->
-    <!-- </mat-toolbar> -->
-
-  </mat-drawer-content>
-
-</mat-drawer-container>
+<div class="container">
+  
+  <!-- Privious Task -->
+  <div class="vertical-center">
+    <mat-icon (click)="goBackATask()">chevron_left</mat-icon>
+  </div>
+  
+  <!-- Details of Active Task -->
+  <app-planning-detial [taskAtHand]="taskAtHand"></app-planning-detial>
+  
+  <!-- Next Task -->
+  <div class="vertical-center">
+    <mat-icon (click)="goToNextTask()">chevron_right</mat-icon>
+  </div>
+</div>

@@ -1,6 +1,9 @@
-<p>pdyg-toolbar works!</p>
     <!-- Tool Bar -->
-    <mat-toolbar class="tool-bar">
+    <mat-toolbar *ngIf="router.url != '/'"  class="tool-bar">
       <!-- Go to list -->
       <mat-icon class="pointer" [routerLink]="['/task-list']">view_list</mat-icon>
+      <!-- Go to Home -->
+      <mat-icon class="pointer" [routerLink]="['/']">circle</mat-icon>
+      <!-- Go to Settings -->
+      <mat-icon class="pointer" [routerLink]="['/settings']">settings</mat-icon>
     </mat-toolbar>

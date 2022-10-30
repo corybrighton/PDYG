@@ -3,15 +3,13 @@ import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 const materialModules = [
-  MatTabsModule, MatIconModule, MatSliderModule, MatSidenavModule,
-  MatToolbarModule, MatInputModule, MatDatepickerModule, MatNativeDateModule
+  MatTabsModule, MatIconModule, MatSliderModule, MatToolbarModule, MatInputModule, MatDatepickerModule, MatNativeDateModule
 ];
 
 
