@@ -7,3 +7,11 @@ $intellectual: #f68d39;
 // Break points
 $tabletSize: 768px;
 
+.page-container {
+  height: 100%;
+}
+
+.main-container {
+  overflow-y: auto;
+  height: 93%
+}

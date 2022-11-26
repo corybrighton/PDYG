@@ -17,9 +17,23 @@
 .up-class {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .priority-graph {
   display: flex;
-  justify-content: baseline;
+  align-items: center;
+}
+
+.urgent-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.emptydiv {
+  width: 48px;
+}
+
+.calendar {
+  width: 200px;
 }

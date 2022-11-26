@@ -39,10 +39,12 @@
       <svg class="graph">
         <!-- urgency (x axis) -->
         <g>
-          <text x="-95" y="20" transform="rotate(-90)">Important</text>
-          <text x="-180" y="20" transform="rotate(-90)">Unimportant</text>
-          <text x="110" y="20">Urgent</text>
-          <text x="30" y="20">Not Urgent</text>
+          <text x="-138" y="20" transform="rotate(-90)">Importance</text>
+          <!-- <text x="-95" y="20" transform="rotate(-90)">Important</text>
+          <text x="-180" y="20" transform="rotate(-90)">Unimportant</text> -->
+          <text x="75" y="20">Urgency</text>
+          <!-- <text x="110" y="20">Urgent</text>
+          <text x="30" y="20">Not Urgent</text> -->
         </g>
         <g class="grid">
           <line x1="100" x2="100" y1="25" y2="175"></line>
@@ -63,7 +65,7 @@
     </div>
 
     <!-- Priority Slider -->
-    <div>
+    <div class="slider">
       <mat-slider (change)="graphScaling()" [(ngModel)]="taskAtHand.priority" vertical="true" step="1" min="0" max="10"
         aria-label="units">
       </mat-slider>
@@ -71,9 +73,13 @@
   </div>
 
   <!-- Urgency Slider -->
-  <div>
-    <mat-slider (change)="graphScaling()" [(ngModel)]="taskAtHand.urgency" step="1" min="0" max="10" aria-label="units">
-    </mat-slider>
+  <div class="urgent-container">
+    <div class="slider urgent">
+      <mat-slider (change)="graphScaling()" [(ngModel)]="taskAtHand.urgency" step="1" min="0" max="10" aria-label="units">
+      </mat-slider>
+    </div>
+    
+    <div class="emptydiv"></div>
   </div>
 </div>
 
@@ -89,4 +95,4 @@
   Has been Postpone {{taskAtHand.postponed}}
 </div>
 
-<mat-calendar [(selected)]="taskAtHand.dueDate"></mat-calendar>
+<mat-calendar class="calendar" [(selected)]="taskAtHand.dueDate"></mat-calendar>

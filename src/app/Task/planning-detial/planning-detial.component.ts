@@ -38,7 +38,7 @@ export class PlanningDetialComponent implements OnInit {
   }
 
   graphScaling() {
-    const offset = 25;
+    const offset = 10;
     const axisLength = 200 - (2 * offset);
     this.urgency = offset + this.taskAtHand.urgency * (axisLength / 10);
     this.priority = (axisLength + offset) - (this.taskAtHand.priority * (axisLength / 10));
